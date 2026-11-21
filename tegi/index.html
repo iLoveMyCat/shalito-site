@@ -6,7 +6,7 @@
 <script>if(location.protocol==='http:'&&/^(www\.)?shalito\.net$/.test(location.hostname))location.replace('https://'+location.host+location.pathname+location.search+location.hash)</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light">
-<meta http-equiv="content-security-policy" content="default-src 'self'; script-src 'sha256-HYnRq9VPa1erf/6Iimb01/iFvBCSdvM9W35w/MI9Bus=' 'sha256-eCkTBzjyL/wt05M2e3i19yFYjHK+83mzPeTo7395jxE='; style-src 'sha256-bb4YnxZhwLtq97h8Sj7Sig029yqD86IApJV/NnjGeqA='; img-src 'self' data:; connect-src 'self' https://shalito-family.arikshalito.workers.dev; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="content-security-policy" content="default-src 'self'; script-src 'sha256-HYnRq9VPa1erf/6Iimb01/iFvBCSdvM9W35w/MI9Bus=' 'sha256-+7SB061SC04jpi//4FhTqpcs+1sVIe5PUAq7gqCHpbU='; style-src 'sha256-5Q87VExCP2kcZnmG5ozknFPPCTFXyE1yIZVDXcc6P5g='; img-src 'self' data:; connect-src 'self' https://shalito-family.arikshalito.workers.dev; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
 <title>Признаки работ Шалито</title>
@@ -211,6 +211,44 @@ html.lbopen,html.lbopen body{overflow:hidden;overscroll-behavior:none}
 .chips.sug .chip.on{background:#fff;color:var(--green);border:3px dashed var(--green)}
 .count{font-variant-numeric:tabular-nums}
 .tally{margin:10px 0 0;font-size:1.375rem;font-weight:800;color:#fff;font-variant-numeric:tabular-nums}
+/* tegi-v4: «✏️ Изменить текст» - every tag of the work in a big field, save / cancel */
+.editbtn{font:inherit;font-weight:700;cursor:pointer;border-radius:12px;padding:10px 18px;min-height:56px;background:#fff;color:var(--ink);border:3px solid var(--navy);justify-self:start;text-align:start}
+.editor{display:grid;gap:18px;background:#fff;border:3px solid var(--navy);border-radius:12px;padding:14px}
+.edhint{margin:0;font-weight:700}
+.edrow{display:grid;gap:6px}
+.edrow label{font-weight:700;font-size:1.125rem;color:var(--muted)}
+.edrow textarea{display:block;width:100%;font:inherit;line-height:1.4;padding:12px 14px;border-radius:12px;border:2px solid var(--edge);background:#fff;color:var(--ink);min-height:64px;resize:none;overflow:hidden}
+.edrow textarea.changed{border:3px solid var(--green);background:#f1faf3}
+.edrow .hint{margin:0;font-size:1.125rem;color:var(--muted)}
+.edsave{font:inherit;font-weight:800;font-size:1.375rem;cursor:pointer;border-radius:14px;padding:14px 18px;min-height:64px;background:var(--green);color:#fff;border:3px solid var(--green);width:100%}
+.edcancel{font:inherit;font-weight:700;cursor:pointer;border-radius:12px;padding:10px 18px;min-height:56px;background:#fff;color:var(--ink);border:3px solid var(--edge);width:100%}
+.flash{margin:0;font-weight:800;color:var(--green);background:#fff;border:2px solid var(--green);border-radius:12px;padding:8px 14px}
+.q:focus{outline:none}
+.len{margin:0;font-size:1.125rem;font-weight:700;color:var(--muted)}
+.len[data-full="1"]{color:var(--red)}
+/* tegi-v4: his own words - one folded button with a count; inside a compact wrap and two tools (fix / remove a word) */
+.ownbtn{font:inherit;font-weight:700;cursor:pointer;border-radius:12px;padding:10px 18px;min-height:56px;background:#fff;color:var(--ink);border:2px solid var(--edge);justify-self:start;text-align:start}
+.ownbtn.on{background:#f1eee9}
+.ownbox{display:grid;gap:14px;background:#fff;border:2px solid var(--edge);border-radius:12px;padding:12px}
+.ownbox.fix{border:3px solid var(--navy)}
+.ownbox.drop{border:3px solid var(--red)}
+.ownbox .hint{margin:0;font-size:1.125rem;color:var(--muted)}
+.hint:focus{outline:none}
+.chips.tight{gap:8px}
+.chips.tight .chip{padding:8px 12px}
+.owntools{display:flex;flex-wrap:wrap;gap:10px;border-top:2px solid #d9d2c8;padding-top:12px}
+.toolbtn{font:inherit;font-size:1.125rem;font-weight:700;cursor:pointer;border-radius:12px;padding:10px 14px;min-height:52px;flex:1 1 11rem;background:#fff;color:var(--ink);border:2px solid var(--edge);text-align:center}
+.edhint:focus{outline:none}
+.droplist{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.droprow{font:inherit;cursor:pointer;border-radius:12px;padding:10px 14px;min-height:56px;width:100%;text-align:start;background:#fff;color:var(--ink);border:2px solid var(--edge)}
+.dropword{margin:0;font-weight:800;font-size:1.375rem}
+.dropyes{font:inherit;font-weight:800;font-size:1.375rem;cursor:pointer;border-radius:14px;padding:14px 18px;min-height:64px;background:var(--red);color:#fff;border:3px solid var(--red);width:100%}
+/* tegi-v4c: «Убрать «слово»?» before a word leaves a work; «↶ Отменить» / «↷ Вернуть» on every open work */
+.chip.on.ask,.chips.sug .chip.on.ask{background:#fff;color:var(--red);border:3px solid var(--red)}
+.askq:focus{outline:none}
+.undorow{display:flex;flex-wrap:wrap;gap:10px}
+.unbtn{font:inherit;font-weight:700;cursor:pointer;border-radius:12px;padding:10px 12px;min-height:56px;flex:1 1 9rem;background:#fff;color:var(--ink);border:3px solid var(--navy);text-align:center}
+.unbtn:disabled{cursor:default;background:#f1eee9;color:#5c554d;border:2px dashed #8a8077}
 </style>
 </head>
 <body>
@@ -233,8 +271,10 @@ html.lbopen,html.lbopen body{overflow:hidden;overscroll-behavior:none}
     <h2>Как это сделать</h2>
     <ol>
       <li>Посмотрите фото. Нажмите на фото, чтобы увеличить.</li>
-      <li>Слова в <b>пунктирной рамке</b> мы предложили. Если слово не подходит, нажмите на него, и оно уйдёт. Ваши слова – <b>сплошные зелёные</b>.</li>
+      <li>Слова в <b>пунктирной рамке</b> мы предложили. Если слово не подходит, нажмите на него. Страница спросит: «Убрать?» Нажмите <b>«Да, убрать»</b>. Ваши слова – <b>сплошные зелёные</b>.</li>
       <li>Чего-то не хватает? Нажмите <b>«+ Добавить признак»</b>. Выберите из списка или напишите своё.</li>
+      <li>Ошибка в слове? Нажмите <b>«✏️ Изменить текст»</b>, исправьте слово и нажмите <b>«Сохранить»</b>. Ваши собственные слова лежат под кнопкой <b>«Ваши слова»</b>: там их можно добавить, исправить или убрать.</li>
+      <li>Нажали не то? Под словами каждой работы есть кнопки <b>«↶ Отменить»</b> (шаг назад) и <b>«↷ Вернуть»</b>.</li>
       <li>Нажмите большую кнопку <b>«Готово»</b>. Работа свернётся в зелёную строку, а сразу под ней будет следующая. Чтобы исправить, нажмите <b>«Изменить»</b>.</li>
     </ol>
     <p class="flat">У каждой работы написано, где она:</p>
@@ -360,7 +400,12 @@ const FS_MARK={ok:'✓ Сохранено',wait:'Сохраняю…',fail:'Не
 // Our suggested tags come pre-selected; he removes what is wrong and adds what is missing. Every tag he adds joins ONE
 // shared list (state.own), so on the next cards it is one tap, never typed twice (match: trimmed, case-insensitive, ё = е).
 // Store 'shalito-tags-v1' (saved to the server by sync.js as data.tags):
-//   {p: {<slug>: {sel: {<tag id>: 1, ...}, done: true|false, t}}, own: {<u-xxxxxx>: 'label'}}
+//   {p: {<slug>: {sel: {<tag id>: 1, ...}, done: true|false, t}}, own: {<u-xxxxxx>: 'label'}, x: {<old own id>: <new id> | 0}}
+// «✏️ Изменить текст» (tegi-v4): the text of an id never changes (another phone may hold a copy of it). A corrected word is
+// a NEW own word that takes the old one's place, and x remembers old -> new so the old word is hidden everywhere.
+// «🗑 Убрать слово из списка»: x[id] = 0, the word leaves every work and the shared list.
+// tegi-v4c: a tap on a selected word asks «Убрать «слово»?» first (yes / no, Back = no). Every open work has
+// «↶ Отменить» / «↷ Вернуть» for the changes made on it during this visit (not kept over a reload).
 // A project without p[slug].sel still has its suggestions. "Готово" writes sel explicitly, so the server copy is complete.
 // Shared status: on load the page asks the Worker for the tags of ALL devices (merged, newest t per work wins) and keeps
 // them in 'shalito-tags-shared-v1' (never sent back). A work shows whichever is newer, this phone's record or the shared
@@ -373,7 +418,7 @@ const btn=(cls,text)=>{const b=el('button',cls,text);b.type='button';return b};
 const read=(k,d)=>{try{return JSON.parse(localStorage.getItem(k)||'null')||d}catch(e){return d}};
 const smooth=()=>matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
 const nk=s=>String(s==null?'':s).toLowerCase().replace(/ё/g,'е').replace(/\s+/g,' ').trim();
-const MAXLEN=60;
+const MAXLEN=100;
 
 let state;
 function load(){
@@ -381,13 +426,16 @@ function load(){
   if(!state||typeof state!=='object')state={};
   state.p=state.p&&typeof state.p==='object'?state.p:{};
   state.own=state.own&&typeof state.own==='object'?state.own:{};
+  state.x=state.x&&typeof state.x==='object'?state.x:{};
 }
 load();
 let shared=read(SKEY,{});
 if(!shared||typeof shared!=='object')shared={};
 shared.p=shared.p&&typeof shared.p==='object'?shared.p:{};shared.own=shared.own&&typeof shared.own==='object'?shared.own:{};
 const VMAP=Object.fromEntries(VOCAB.map(v=>[v.id,v.ru]));
-const label=id=>VMAP[id]||state.own[id]||shared.own[id]||'';
+const fw=id=>{for(let n=0;state.x[id]&&n<9;n++)id=state.x[id];return id}; // a replaced word -> the word that took its place
+const gone=id=>Object.prototype.hasOwnProperty.call(state.x,id);
+const label=id=>gone(id)?'':VMAP[id]||state.own[id]||shared.own[id]||'';
 const ownIds=()=>[...new Set([...Object.keys(state.own),...Object.keys(shared.own)])].filter(id=>!VMAP[id]&&label(id));
 const allIds=()=>[...VOCAB.map(v=>v.id),...ownIds()].filter(id=>label(id));
 // this phone's record or the shared one, whichever is newer (this phone wins a tie)
@@ -396,7 +444,7 @@ const stOf=p=>{const r=R(p);return !r?'new':r.done?'done':'started'};
 const STLABEL={done:'✓ Готово',started:'◐ Начато – не закончено',new:'○ Ещё не смотрел'};
 // a word from another phone that he picks here is written into this phone's list too, so every saved copy has its label
 const keepOwn=ids=>ids.forEach(id=>{if(!VMAP[id]&&!state.own[id]&&shared.own[id])state.own[id]=shared.own[id]});
-const sel=p=>{const r=R(p);return r&&r.sel&&typeof r.sel==='object'?Object.keys(r.sel).filter(label):p.g.slice()};
+const sel=p=>{const r=R(p);return r&&r.sel&&typeof r.sel==='object'?Object.keys(r.sel).map(fw).filter((id,i,a)=>label(id)&&a.indexOf(id)===i):p.g.slice()};
 const isDone=p=>!!(R(p)&&R(p).done);
 let localFail=false;
 function save(){
@@ -410,16 +458,171 @@ function setSel(p,ids){
   save();
 }
 function findTag(text){const k=nk(text);return allIds().find(id=>nk(label(id))===k)||null}
+const tidy=text=>String(text).replace(/\s+/g,' ').trim().slice(0,MAXLEN);
+function freshId(){let id;do{const b=new Uint8Array(3);crypto.getRandomValues(b);id='u-'+[...b].map(x=>x.toString(16).padStart(2,'0')).join('')}while(state.own[id]||shared.own[id]||VMAP[id]||gone(id));return id}
 function newTag(text){
-  const t=text.replace(/\s+/g,' ').trim().slice(0,MAXLEN);
+  const t=tidy(text);
   if(!t)return null;
   const had=findTag(t);if(had)return had;
-  let id;do{const b=new Uint8Array(3);crypto.getRandomValues(b);id='u-'+[...b].map(x=>x.toString(16).padStart(2,'0')).join('')}while(state.own[id]||shared.own[id]||VMAP[id]);
+  const id=freshId();
   state.own[id]=t;return id;
 }
+// Works (other than p) that have this tag now.
+const others=(p,id)=>PROJECTS.filter(q=>q!==p&&sel(q).includes(id));
+// Change the text of tag id on work p. His own word changes on every work that has it (a typo is fixed everywhere);
+// a word of our list changes on this work only and stays in the list. Returns true when something changed.
+function retext(p,id,text){
+  const t=tidy(text),was=label(id);
+  if(!t||!was||t===was)return false;
+  const mine=!VMAP[id];
+  let nid=allIds().find(x=>x!==id&&nk(label(x))===nk(t))||null; // the new text is a word that already exists
+  if(!nid){
+    if(!mine&&nk(t)===nk(was))return false; // our word, only the letter case differs
+    nid=freshId();state.own[nid]=t;
+  }
+  (mine?[p,...others(p,id)]:[p]).forEach(q=>{const s=sel(q);if(s.includes(id))setSel(q,s.map(x=>x===id?nid:x).filter((x,i,a)=>a.indexOf(x)===i))});
+  if(mine){delete state.own[id];state.x[id]=nid;save()}
+  return true;
+}
+// Remove one of his own words for good: from every work that has it and from the list of his words.
+function dropOwn(id){
+  if(VMAP[id]||!label(id))return false;
+  PROJECTS.forEach(q=>{const s=sel(q);if(s.includes(id))setSel(q,s.filter(x=>x!==id))});
+  delete state.own[id];state.x[id]=0;save();
+  return true;
+}
+// Undo / redo (tegi-v4c): every change made on a work (add, remove, change text, a word removed from the list, «Готово»)
+// is one step in that work's history. Kept for this visit only: a reload starts with an empty history.
+// A step remembers what each touched work showed before and after, plus the words / replacements it created.
+// Undo puts this work back to "before". Another work the step also changed (his word fixed on several works) goes back
+// only if it still shows what the step left there, so a later change on that work is never overwritten.
+// A restored record gets a fresh t, so it is saved and wins like any other change.
+const hist={}; // slug -> {u: [steps], r: [steps]}
+const view=q=>({sel:sel(q),done:isDone(q),had:!!state.p[q.s]});
+const sameView=(a,b)=>a.done===b.done&&a.sel.join()===b.sel.join();
+function act(p,fn){
+  const v0=PROJECTS.map(view),own0={...state.own},x0={...state.x};
+  const out=fn();
+  const diff=(a,b)=>[...new Set([...Object.keys(a),...Object.keys(b)])].filter(k=>a[k]!==b[k]).map(k=>[k,a[k],b[k]]);
+  const e={v:[],own:diff(own0,state.own),x:diff(x0,state.x)};
+  PROJECTS.forEach((q,i)=>{const v1=view(q);if(!sameView(v0[i],v1)||v0[i].had!==v1.had)e.v.push([q,v0[i],v1])});
+  if(e.v.length||e.own.length||e.x.length){const h=hist[p.s]||(hist[p.s]={u:[],r:[]});h.u.push(e);h.r.length=0;if(h.u.length>50)h.u.shift()}
+  return out;
+}
+function step(p,dir){ // dir: 0 = undo, 1 = redo
+  const h=hist[p.s],e=h&&(dir?h.r:h.u).pop();if(!e)return false;
+  (dir?h.u:h.r).push(e);
+  const now=Date.now(),to=dir?2:1,from=dir?1:2;
+  const rows=e.v.filter(r=>r[0]===p||sameView(view(r[0]),r[from]));
+  const put=(q,v)=>{state.p[q.s]={sel:Object.fromEntries(v.sel.map(i=>[i,1])),done:v.done,t:now}};
+  rows.forEach(r=>{if(r[to].had)put(r[0],r[to]);else delete state.p[r[0].s]});
+  e.x.forEach(r=>{if(r[to]===undefined)delete state.x[r[0]];else state.x[r[0]]=r[to]});
+  // a word this step created stays in his list while some work still uses it
+  e.own.forEach(r=>{if(r[to]!==undefined)state.own[r[0]]=r[to];else if(dir||!PROJECTS.some(q=>sel(q).includes(r[0])))delete state.own[r[0]]});
+  rows.forEach(r=>{if(!sameView(view(r[0]),r[to]))put(r[0],r[to])}); // e.g. another phone's copy shows through: write it out
+  save();return true;
+}
+
+// The length limit is never silent: a line under the field counts down the last 20 characters and says when it is full.
+function lenNote(node,field){
+  const left=MAXLEN-field.value.length;
+  node.hidden=left>20;node.dataset.full=left<=0?'1':'';
+  node.textContent=left<=0?'Больше не помещается ('+MAXLEN+' знаков). Сократите, пожалуйста.':'Осталось знаков: '+left;
+}
+
+// Phone Back button (tegi-v4): everything that opens (a photo, a done work, the add list, his words, the text editor) is
+// a layer with one history entry. Back closes the top layer and stays on the page; a close button closes its layer and
+// takes the entry out again, so the history stays clean. Every close function is safe to call twice.
+const layers=[]; // {k, close}
+let unwinding=0;const pendingLayers=[];
+function layerOpen(k,close){
+  if(unwinding){pendingLayers.push([k,close]);return} // a close is still walking the history back: open right after it
+  if(layers.some(l=>l.k===k))return;
+  layers.push({k,close});
+  try{history.pushState({ly:layers.length},'')}catch(e){}
+}
+function unwound(){
+  clearTimeout(unwinding);unwinding=0;
+  pendingLayers.splice(0).forEach(([k,c])=>layerOpen(k,c));
+}
+// The caller has already closed k itself; layers opened on top of it are closed here.
+function layerClose(k){
+  const i=layers.findIndex(l=>l.k===k);if(i<0)return;
+  const n=layers.length-i;
+  layers.splice(i).reverse().forEach(l=>{if(l.k!==k)l.close()});
+  clearTimeout(unwinding);unwinding=setTimeout(unwound,700);
+  try{history.go(-n)}catch(e){unwound()}
+}
+const layerCloseCard=p=>{const l=layers.find(l=>l.k.endsWith(':'+p.s));if(l)layerClose(l.k)};
+window.addEventListener('popstate',()=>{
+  const want=history.state&&history.state.ly||0;
+  while(layers.length>want)layers.pop().close();
+  if(unwinding)unwound();
+});
+try{const ly=history.state&&history.state.ly;if(ly)history.go(-ly)}catch(e){} // reloaded with something open: drop those entries
 
 const open={};   // slug -> a done card is unfolded right now
 const adder={};  // slug -> {on, q}
+const editor={}; // slug -> {on, v: {<tag id>: text typed so far}}
+const flash={};  // slug -> one line shown once after «Сохранить»
+const words={};   // slug -> {on}: the list of his own words is unfolded
+const remover={}; // slug -> {mode: null|'edit'|'drop', ask: <own id he is asked about>}
+const asker={};   // slug -> the tag id he is asked about: «Убрать «слово»?» (remove it from this work)
+function openDone(p){open[p.s]=true;layerOpen('open:'+p.s,()=>{if(open[p.s]){open[p.s]=false;paint(p,'fold','top')}})}
+// A tap on a selected word never removes it at once: the work shows a yes / no question under its words.
+function askRemove(p,id){
+  asker[p.s]=id;
+  layerOpen('rm:'+p.s,()=>{if(asker[p.s]){asker[p.s]=null;paint(p,'list','.selected')}});
+  paint(p,'ask','.selected');
+}
+function askBox(p,card,id){
+  const box=el('div','ownbox drop askbox');
+  const h=el('p','dropword askq','Убрать «'+label(id)+'»?');h.tabIndex=-1;box.append(h);
+  box.append(el('p','hint',VMAP[id]?'Слово уйдёт только с этой работы.':'Слово уйдёт только с этой работы. В списке «Ваши слова» оно останется.'));
+  const yes=btn('dropyes','Да, убрать'),no=btn('edcancel','Нет, оставить'),born=Date.now();
+  yes.onclick=()=>{
+    if(Date.now()-born<350)return; // a shaky double tap on the word must not land on «Да»
+    asker[p.s]=null;act(p,()=>setSel(p,sel(p).filter(x=>x!==id)));
+    flash[p.s]='✓ Убрано. Если по ошибке, нажмите «↶ Отменить».';
+    paint(p,'undo','.selected');layerClose('rm:'+p.s);
+  };
+  no.onclick=()=>{asker[p.s]=null;paint(p,'list','.selected');layerClose('rm:'+p.s)};
+  box.append(yes,no);card.append(box);
+}
+// «↶ Отменить» / «↷ Вернуть» under the words of every open work; grey while there is nothing to undo / bring back.
+function undoRow(p,card){
+  const h=hist[p.s],row=el('div','undorow');
+  [['↶ Отменить','Отменить последнее изменение',h&&h.u.length],['↷ Вернуть','Вернуть отменённое изменение',h&&h.r.length]].forEach(([t,a,n],dir)=>{
+    const b=btn('unbtn',t);b.disabled=!n;b.setAttribute('aria-label',a+(n?'':' (пока нечего)'));b.onclick=()=>unredo(p,dir);row.append(b);
+  });
+  card.append(row);
+}
+function unredo(p,dir){
+  if(!step(p,dir))return;
+  flash[p.s]=dir?'↷ Возвращено. Сохраняется само.':'↶ Отменено. Сохраняется само.';
+  const card=$('p-'+p.s),all=()=>PROJECTS.forEach(q=>{const c=$('p-'+q.s);if(c)(isDone(q)&&!open[q.s]?small:full)(q,c)}); // the step may have touched other works
+  if(isDone(p)&&!open[p.s]){ // «Готово» is back: the work folds, exactly as when he presses «Готово»
+    const a=adder[p.s];if(a){a.on=false;a.q=''}
+    const w=words[p.s];if(w)w.on=false;const rm=remover[p.s];if(rm){rm.mode=null;rm.ask=null}
+    delete flash[p.s];layerCloseCard(p);
+    all();refresh();toTop(card);
+    const b=card.querySelector('.folded');if(b)b.focus({preventScroll:true});
+    return;
+  }
+  const at=()=>(card.querySelector('.undorow')||card).getBoundingClientRect().top,y0=at();
+  all();
+  const y1=at();if(y1!==y0)scrollBy(0,y1-y0);
+  const bs=[...card.querySelectorAll('.unbtn')],b=bs[dir]&&!bs[dir].disabled?bs[dir]:bs.find(x=>!x.disabled);
+  if(b)b.focus({preventScroll:true});
+  refresh();
+  if(!isDone(p)&&open[p.s]){open[p.s]=false;layerClose('open:'+p.s)} // «Готово» undone: nothing is left for Back to fold
+}
+function openEditor(p,ids){
+  editor[p.s]={on:true,ids:ids||null,v:{}};
+  layerOpen('ed:'+p.s,()=>{const e=editor[p.s];if(e&&e.on){e.on=false;paint(p,'editbtn','.q')}});
+  paint(p,'edit','.q');
+}
+const works=n=>'на '+n+(n%10===1&&n%100!==11?' работе':' работах');
 
 // Photo viewer; the phone's Back button closes it instead of leaving the page.
 let opener=null;
@@ -453,10 +656,9 @@ function openLb(list,i){
   opener=document.activeElement;G=list;gi=i||0;
   lockY=scrollY;document.documentElement.classList.add('lbopen');
   LB.hidden=false;slides();$('lbclose').focus({preventScroll:true});
-  try{history.pushState({lb:1},'')}catch(e){}
+  layerOpen('lb',hideLb);
 }
-function closeLb(){if(LB.hidden)return;if(history.state&&history.state.lb)history.back();else hideLb()}
-window.addEventListener('popstate',hideLb);
+function closeLb(){if(LB.hidden)return;hideLb();layerClose('lb')}
 $('lbclose').onclick=closeLb;
 $('lbprev').onclick=()=>go(-1);
 $('lbnext').onclick=()=>go(1);
@@ -518,15 +720,15 @@ function head(p,small){
 }
 
 function chipOn(p,id){
-  const b=btn('chip on'+(VMAP[id]?'':' mine'),label(id));
+  const b=btn('chip on'+(VMAP[id]?'':' mine')+(asker[p.s]===id?' ask':''),label(id));
   b.setAttribute('aria-label',label(id)+': убрать');
-  b.onclick=()=>{setSel(p,sel(p).filter(x=>x!==id));paint(p,'list','.selected')};
+  b.onclick=()=>askRemove(p,id);
   return b;
 }
 function chipOff(p,id){
   const b=btn('chip off'+(VMAP[id]?'':' mine'),label(id));
   b.setAttribute('aria-label',label(id)+': добавить');
-  b.onclick=()=>{const s=sel(p);if(!s.includes(id))setSel(p,s.concat(id));const a=adder[p.s];if(a)a.q='';paint(p,'list',b.closest('.adder')?'.adder':'.donebtn')};
+  b.onclick=()=>{act(p,()=>{const s=sel(p);if(!s.includes(id))setSel(p,s.concat(id))});const a=adder[p.s];if(a)a.q='';paint(p,'list',b.closest('.adder')?'.adder':b.closest('.ownbox')?'.ownbtn':'.donebtn')};
   return b;
 }
 function listInto(ul,ids,mk){ul.replaceChildren(...ids.map(id=>{const li=el('li');li.append(mk(id));return li}))}
@@ -554,7 +756,7 @@ function full(p,card){
   card.className='card';delete card.dataset.tint;
   const st=stOf(p);card.dataset.state=st;
   card.replaceChildren();
-  if(isDone(p)){const fb=btn('foldbtn','▲ Свернуть');fb.setAttribute('aria-expanded','true');fb.setAttribute('aria-label','Работа №'+p.n+': свернуть');fb.onclick=()=>{open[p.s]=false;paint(p,'fold','top')};card.append(fb)}
+  if(isDone(p)){const fb=btn('foldbtn','▲ Свернуть');fb.setAttribute('aria-expanded','true');fb.setAttribute('aria-label','Работа №'+p.n+': свернуть');fb.onclick=()=>{open[p.s]=false;paint(p,'fold','top');layerClose('open:'+p.s)};card.append(fb)}
   card.append(head(p,false));
   const cov=btn('cover');cov.setAttribute('aria-label','Фото работы №'+p.n+', увеличить');
   const im=el('img');im.src=p.p[0];im.alt='';im.loading='lazy';im.decoding='async';cov.append(im);cov.onclick=()=>openLb(p.p,0);
@@ -565,44 +767,146 @@ function full(p,card){
     card.append(st);
   }
   const sug=st==='new';
+  const ed=editor[p.s];
+  const eids=ed&&ed.on?(ed.ids||sel(p)).filter(label):[];
+  if(eids.length){editBox(p,card,ed,eids);paintMark(card,p);return}
+  if(ed)ed.on=false;
   card.append(el('p','q',sug?'Предложение (проверьте):':'Ваши признаки:'));
-  if(sug)card.append(el('p','sub2','Это мы предложили. Лишнее нажмите, и оно уйдёт.'));
+  if(sug)card.append(el('p','sub2','Это мы предложили. Нажмите на лишнее слово, чтобы убрать его.'));
   const on=el('ul','chips selected'+(sug?' sug':''));card.append(on);
   const none=el('p','none','Пока нет ни одного признака.');card.append(none);
   const s=sel(p);
+  if(asker[p.s]&&!s.includes(asker[p.s]))asker[p.s]=null;
   listInto(on,s,id=>chipOn(p,id));none.hidden=s.length>0;
-
-  // His own tags from other cards: one tap here.
-  const mine=ownIds().filter(id=>!s.includes(id));
-  if(mine.length){
-    card.append(el('p','sub2','Ваши слова с других работ:'));
-    const ul=el('ul','chips');listInto(ul,mine,id=>chipOff(p,id));card.append(ul);
+  if(asker[p.s]){askBox(p,card,asker[p.s]);paintMark(card,p);return} // while he is asked: only yes / no
+  if(flash[p.s]){const fl=el('p','flash',flash[p.s]);fl.setAttribute('role','status');card.append(fl);delete flash[p.s]}
+  undoRow(p,card);
+  if(s.length){
+    const eb=btn('editbtn','✏️ Изменить текст');
+    eb.onclick=()=>openEditor(p,null);
+    card.append(eb);
   }
+
+  ownPanel(p,card,s);
 
   const a=adder[p.s]||(adder[p.s]={on:false,q:''});
   const ab=btn('addbtn'+(a.on?' on':''),a.on?'▲ Скрыть список':'+ Добавить признак');ab.setAttribute('aria-expanded',String(a.on));
-  ab.onclick=()=>{a.on=!a.on;if(!a.on)a.q='';paint(p,a.on?'add':'addbtn','.addbtn')};card.append(ab);
+  const addShut=()=>{if(a.on){a.on=false;a.q='';paint(p,'addbtn','.addbtn')}};
+  ab.onclick=()=>{if(a.on){addShut();layerClose('add:'+p.s)}else{a.on=true;layerOpen('add:'+p.s,addShut);paint(p,'add','.addbtn')}};card.append(ab);
   if(a.on){
     const box=el('div','adder');
     const id='in-'+p.s;
     const lab=el('label',null,'Добавить признак');lab.htmlFor=id;
     const inp=el('input');inp.id=id;inp.type='text';inp.maxLength=MAXLEN;inp.autocomplete='off';inp.setAttribute('autocapitalize','none');inp.setAttribute('enterkeyhint','done');
     inp.placeholder='Например: остров, ящики, подсветка';inp.value=a.q;
-    box.append(lab,inp,el('p','hint'));
+    const cnt=el('p','len');cnt.setAttribute('role','status');cnt.hidden=true;
+    box.append(lab,inp,cnt,el('p','hint'));
     const nb=btn('newtag','');box.append(nb);
     box.append(el('ul','chips mlist'));
-    const close=btn('addnote','▲ Скрыть список');close.onclick=()=>{a.on=false;a.q='';paint(p,'done','.donebtn')};box.append(close);
-    inp.oninput=()=>{a.q=inp.value;paintMatches(p,box)};
-    const addOwn=()=>{const t=inp.value;if(!t.trim())return;const tid=findTag(t)||newTag(t);if(!tid)return;const cur=sel(p);if(!cur.includes(tid))setSel(p,cur.concat(tid));else save();a.q='';paint(p,'input')};
+    const close=btn('addnote','▲ Скрыть список');close.onclick=()=>{a.on=false;a.q='';paint(p,'done','.donebtn');layerClose('add:'+p.s)};box.append(close);
+    inp.oninput=()=>{a.q=inp.value;lenNote(cnt,inp);paintMatches(p,box)};
+    lenNote(cnt,inp);
+    const addOwn=()=>{const t=inp.value;if(!t.trim())return;if(!act(p,()=>{const tid=findTag(t)||newTag(t);if(!tid)return false;const cur=sel(p);if(!cur.includes(tid))setSel(p,cur.concat(tid));else save();return true}))return;a.q='';paint(p,'input')};
     nb.onclick=addOwn;
-    inp.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();const ids=matches(p,inp.value);if(ids.length===1){const cur=sel(p);setSel(p,cur.concat(ids[0]));a.q='';paint(p,'input')}else if(!findTag(inp.value))addOwn()}};
+    inp.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();const ids=matches(p,inp.value);if(ids.length===1){act(p,()=>setSel(p,sel(p).concat(ids[0])));a.q='';paint(p,'input')}else if(!findTag(inp.value))addOwn()}};
     card.append(box);
     paintMatches(p,box);
   }
   const done=btn('donebtn','Готово ✓');
-  done.onclick=()=>finish(p);
+  done.onclick=()=>act(p,()=>finish(p));
   card.append(done);
   paintMark(card,p);
+}
+
+// His own words: folded into one button with their count, so the work stays short. Unfolded, they sit in a compact
+// wrap (tap = add to this work), with two tools: fix the text of a word, or remove a word for good. Both first ask
+// which word; removing also asks yes / no.
+function ownPanel(p,card,s){
+  const all=ownIds();if(!all.length)return;
+  const w=words[p.s]||(words[p.s]={on:false}),r=remover[p.s]||(remover[p.s]={mode:null,ask:null});
+  const kOwn='own:'+p.s,kPick='pick:'+p.s;
+  const shutPick=()=>{r.mode=null;r.ask=null};
+  const ownShut=()=>{if(w.on){w.on=false;shutPick();paint(p,'ownbtn','.ownbtn')}};
+  const tb=btn('ownbtn'+(w.on?' on':''),w.on?'▲ Скрыть ваши слова':'Ваши слова ('+all.length+') ▼');tb.setAttribute('aria-expanded',String(w.on));
+  tb.onclick=()=>{if(w.on){ownShut();layerClose(kOwn)}else{w.on=true;layerOpen(kOwn,ownShut);paint(p,'own','.ownbtn')}};
+  card.append(tb);
+  if(!w.on)return;
+  const box=el('div','ownbox');card.append(box);
+  if(r.ask&&!label(r.ask))r.ask=null;
+  if(!r.mode){
+    const mine=all.filter(id=>!s.includes(id));
+    const h=el('p','hint',mine.length?'Нажмите на слово, и оно добавится к этой работе.':'Все ваши слова уже стоят на этой работе.');h.tabIndex=-1;box.append(h);
+    if(mine.length){const ul=el('ul','chips tight');listInto(ul,mine,id=>chipOff(p,id));box.append(ul)}
+    const tools=el('div','owntools');
+    [['edit','✏️ Исправить слово'],['drop','🗑 Убрать слово']].forEach(([m,t])=>{
+      const b=btn('toolbtn',t);
+      b.onclick=()=>{r.mode=m;r.ask=null;layerOpen(kPick,()=>{if(r.mode){shutPick();paint(p,'own','.ownbox')}});paint(p,'own','.ownbox')};
+      tools.append(b);
+    });
+    box.append(tools);return;
+  }
+  box.classList.add(r.mode==='drop'?'drop':'fix');
+  const back=btn('edcancel',r.ask?'Нет, оставить':'Отмена');
+  if(!r.ask){
+    const h=el('p','edhint',r.mode==='edit'?'Какое слово исправить?':'Какое слово убрать совсем?');h.tabIndex=-1;box.append(h);
+    const ul=el('ul','droplist');
+    all.forEach(id=>{
+      const li=el('li'),b=btn('droprow',(r.mode==='edit'?'✏️ ':'✕ ')+label(id));
+      b.setAttribute('aria-label',(r.mode==='edit'?'Исправить слово: ':'Убрать слово: ')+label(id));
+      b.onclick=()=>{if(r.mode==='edit')openEditor(p,[id]);else{r.ask=id;paint(p,'own','.ownbox')}};
+      li.append(b);ul.append(li);
+    });
+    box.append(ul);
+    back.onclick=()=>{shutPick();paint(p,'own','.ownbox');layerClose(kPick)};
+  }else{
+    const id=r.ask,n=PROJECTS.filter(q=>sel(q).includes(id)).length;
+    const h=el('p','edhint','Убрать это слово совсем?');h.tabIndex=-1;box.append(h);
+    box.append(el('p','dropword','«'+label(id)+'»'));
+    box.append(el('p','hint',n?'Оно стоит '+works(n)+'. Там оно тоже уберётся.':'Сейчас оно не стоит ни на одной работе.'));
+    const yes=btn('dropyes','Да, убрать');
+    yes.onclick=()=>{shutPick();if(act(p,()=>dropOwn(id)))flash[p.s]='✓ Слово убрано. Сохраняется само.';repaintAll(p,'.ownbtn');layerClose(kPick)};
+    box.append(yes);
+    back.onclick=()=>{r.ask=null;paint(p,'own','.ownbox')};
+  }
+  box.append(back);
+}
+
+// «✏️ Изменить текст»: every tag of the work in its own big field; nothing changes until «Сохранить».
+function editBox(p,card,ed,ids){
+  const q=el('p','q','Изменить текст');q.tabIndex=-1;card.append(q);
+  const box=el('div','editor');
+  box.append(el('p','edhint','Исправьте слово прямо в рамке. Потом нажмите «Сохранить».'));
+  const rows=ids.map((id,i)=>{
+    const row=el('div','edrow'),fid='ed-'+p.s+'-'+i;
+    const lab=el('label',null,ids.length>1?'Признак '+(i+1)+':':'Признак:');lab.htmlFor=fid;
+    const ta=el('textarea');ta.id=fid;ta.rows=2;ta.maxLength=MAXLEN;ta.autocomplete='off';ta.spellcheck=false;
+    ta.setAttribute('autocapitalize','none');ta.setAttribute('enterkeyhint','done');
+    ta.value=ed.v[id]!=null?ed.v[id]:label(id);
+    const fit=()=>{ta.style.height='auto';ta.style.height=(ta.scrollHeight+6)+'px';ta.classList.toggle('changed',!!tidy(ta.value)&&tidy(ta.value)!==label(id));lenNote(cnt,ta)};
+    ta.oninput=()=>{ed.v[id]=ta.value;fit()};
+    ta.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();ta.blur()}}; // one line: «Готово» on the keyboard just hides it
+    const cnt=el('p','len');cnt.setAttribute('role','status');cnt.hidden=true;
+    row.append(lab,ta,cnt);
+    const n=others(p,id).length;
+    if(VMAP[id])row.append(el('p','hint','Слово из нашего списка. Изменится только на этой работе.'));
+    else if(n)row.append(el('p','hint','Это ваше слово. Оно стоит ещё '+works(n)+', там тоже исправится.'));
+    box.append(row);
+    return {id,ta,fit};
+  });
+  const sv=btn('edsave','Сохранить ✓'),cn=btn('edcancel','Отмена');
+  const close=()=>{editor[p.s]={on:false,v:{}}};
+  sv.onclick=()=>{
+    let n=0;act(p,()=>rows.forEach(r=>{if(retext(p,r.id,r.ta.value))n++}));
+    close();if(n)flash[p.s]=n>1?'✓ Текст изменён ('+n+'). Сохраняется само.':'✓ Текст изменён. Сохраняется само.';
+    const r=remover[p.s],viaList=!!(r&&r.mode); // came from «Исправить слово»: that list closes too
+    if(viaList){r.mode=null;r.ask=null}
+    repaintAll(p,'.editbtn');
+    layerClose(viaList?'pick:'+p.s:'ed:'+p.s);
+  };
+  cn.onclick=()=>{close();paint(p,'editbtn','.q');layerClose('ed:'+p.s)};
+  box.append(sv,cn);
+  card.append(box);
+  rows.forEach(r=>r.fit());
 }
 
 function small(p,card){
@@ -613,7 +917,7 @@ function small(p,card){
   ft.append(el('b',null,'✓ Готово · №'+p.n+' · '+p.cr),el('span',null,sel(p).map(label).join(', ')||'без признаков'),el('span','edit','Изменить ▼'));
   b.append(im,ft);
   b.setAttribute('aria-label','Работа №'+p.n+', готово: '+(sel(p).map(label).join(', ')||'без признаков')+'. Открыть, изменить');
-  b.onclick=()=>{open[p.s]=true;paint(p,'fold','top')};
+  b.onclick=()=>{openDone(p);paint(p,'fold','top')};
   const m=el('p','mark');m.hidden=true;
   card.replaceChildren(b,m);
   paintMark(card,p);
@@ -632,10 +936,30 @@ function paint(p,focus,anchor){
   if(y0!=null&&y1!=null&&y1!==y0)scrollBy(0,y1-y0);
   if(anchor==='top'&&card.getBoundingClientRect().top<barH())toTop(card);
   if(focus==='input'||focus==='add'){const i=card.querySelector('input');if(i)i.focus({preventScroll:true})}
+  else if(focus==='edit'){const t=card.querySelectorAll('.editor textarea'),q=card.querySelector('.q');if(t.length===1){t[0].focus({preventScroll:true});try{t[0].setSelectionRange(t[0].value.length,t[0].value.length)}catch(e){}}else if(q)q.focus({preventScroll:true});
+    if(q){const y=q.getBoundingClientRect().top;if(y<barH()+8||y>innerHeight*0.5)scrollBy(0,y-barH()-12)}} // the editor starts right under the bar
+  else if(focus==='ask'){const h=card.querySelector('.askq'),bx=card.querySelector('.askbox');if(h)h.focus({preventScroll:true});
+    if(bx){const r=bx.getBoundingClientRect();if(r.bottom>innerHeight-8)scrollBy(0,Math.min(r.bottom-innerHeight+12,card.querySelector('.selected').getBoundingClientRect().top-barH()-12))}} // yes / no fully on screen
+  else if(focus==='undo'){const b=card.querySelector('.unbtn:not(:disabled)')||card.querySelector('.donebtn');if(b)b.focus({preventScroll:true})}
+  else if(focus==='own'){const h=card.querySelector('.ownbox [tabindex="-1"]');if(h)h.focus({preventScroll:true})}
+  else if(focus==='ownbtn'){const b=card.querySelector('.ownbtn');if(b)b.focus({preventScroll:true})}
+  else if(focus==='editbtn'){const b=card.querySelector('.editbtn');if(b)b.focus({preventScroll:true})}
   else if(focus==='addbtn'){const b=card.querySelector('.addbtn');if(b)b.focus({preventScroll:true})}
   else if(focus==='list'){const b=card.querySelector('.donebtn');if(b&&!card.contains(document.activeElement))b.focus({preventScroll:true})}
   else if(focus==='done'){const b=card.querySelector('.donebtn');if(b)b.focus({preventScroll:true})}
   else if(focus==='fold'){const b=card.querySelector('.folded,.foldbtn');if(b)b.focus({preventScroll:true})}
+  refresh();
+}
+
+// After a text change: every card is repainted where it stands (the word may be on other works and in their lists),
+// and the card he is on stays at the same place on screen.
+function repaintAll(p,focusSel){
+  const card=$('p-'+p.s),y0=card.getBoundingClientRect().top;
+  PROJECTS.forEach(q=>{const c=$('p-'+q.s);if(c)(isDone(q)&&!open[q.s]?small:full)(q,c)});
+  const y1=card.getBoundingClientRect().top;
+  if(y1!==y0)scrollBy(0,y1-y0);
+  const q=card.querySelector('.q');if(q)scrollBy(0,q.getBoundingClientRect().top-barH()-12); // his tags and the «Текст изменён» line right under the bar
+  const b=card.querySelector(focusSel)||card.querySelector('.donebtn');if(b)b.focus({preventScroll:true});
   refresh();
 }
 
@@ -645,6 +969,9 @@ function finish(p){
   const r=state.p[p.s]||(state.p[p.s]={});
   r.sel=Object.fromEntries(ids.map(i=>[i,1]));r.done=true;r.t=Date.now();
   open[p.s]=false;const a=adder[p.s];if(a){a.on=false;a.q=''}
+  delete editor[p.s];const w=words[p.s];if(w)w.on=false;const rm=remover[p.s];if(rm){rm.mode=null;rm.ask=null}
+  asker[p.s]=null;
+  layerCloseCard(p);
   save();
   const card=$('p-'+p.s);
   small(p,card);refresh();
@@ -692,7 +1019,7 @@ $('next').onclick=()=>{
 };
 
 FS.sub(()=>{PROJECTS.forEach(p=>{const c=$('p-'+p.s);if(c)paintMark(c,p)});refresh()});
-window.addEventListener('storage',e=>{if(e.key===KEY){load();place()}});
+window.addEventListener('storage',e=>{if(e.key===KEY){Object.keys(hist).forEach(k=>delete hist[k]);load();place()}});
 place();
 // Shared status from the server. Before he touches anything the lists are re-sorted; after that a work only repaints
 // in place (its label and colour change), so nothing jumps under his finger.
@@ -709,7 +1036,7 @@ function pull(){
     try{localStorage.setItem(SKEY,JSON.stringify(shared))}catch(e){}
     if(key()===before)return;
     if(!touched&&LB.hidden){place();return}
-    PROJECTS.forEach(p=>{const c=$('p-'+p.s);if(c&&!c.contains(document.activeElement))(isDone(p)&&!open[p.s]?small:full)(p,c)});
+    PROJECTS.forEach(p=>{const c=$('p-'+p.s);if(c&&!c.contains(document.activeElement)&&!(editor[p.s]&&editor[p.s].on)&&!asker[p.s])(isDone(p)&&!open[p.s]?small:full)(p,c)});
     refresh();
   });
 }
